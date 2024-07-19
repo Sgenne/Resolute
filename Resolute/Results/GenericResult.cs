@@ -46,6 +46,23 @@ public class Result<TError, TValue>
     }
 
     /// <summary>
+    /// Returns the current result if it is successful. Otherwise, the exception returned 
+    /// by the provided function is thrown.
+    /// </summary>
+    /// <param name="exceptionFunc">The function used to produce an exception in the case of
+    /// an unsuccessful result. The failed result object will be passed to the function.</param>
+    /// <returns>The current result if it is successful.</returns>
+    public Result<TError, TValue> ThrowIfFailed(Func<Result<TError, TValue>, Exception> exceptionFunc)
+    {
+        if (Failed)
+        {
+            throw exceptionFunc(this);
+        }
+
+        return this;
+    }
+
+    /// <summary>
     /// Gets a value indicating whether the result succeeded.
     /// </summary>
     public bool Succeeded => _error == null;

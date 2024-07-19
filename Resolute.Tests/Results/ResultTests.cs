@@ -56,4 +56,28 @@ public class ResultTests
     {
         Assert.Throws<ArgumentNullException>(() => Result.Success<Error>(null!));
     }
+
+    [Fact]
+    public void ThrowIfFailed_Failed_ThrowException()
+    {
+        var result = Result.Failure<int, string>(1);
+
+        Assert.Throws<InvalidDataException>(
+            () => result.ThrowIfFailed((res) => new InvalidDataException("Exception"))
+        );
+    }
+
+    [Fact]
+    public void ThrowIfFailed_Succeeded_ReturnsResult()
+    {
+        var value = "value";
+
+        var result = Result.Success(value);
+
+        var returned = result.ThrowIfFailed(
+            (res) => new InvalidDataException("Exception")
+        );
+
+        Assert.Equal(value, returned.Value);
+    }
 }
