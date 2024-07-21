@@ -8,6 +8,18 @@ namespace Resolute.Results;
 /// </summary>
 public static class Result
 {
+
+    /// <summary>
+    /// Creates a successful <see cref="Result{TValue}" without a value./> 
+    /// </summary>
+    /// <returns>successful <see cref="Result{TValue}" without a value.</returns>
+    public static Result<Unit> EmptySuccess()
+    {
+        var result = new Result<Unit>(Unit.Value);
+
+        return result;
+    }
+
     /// <summary>
     /// Creates a successful <see cref="Result{TValue}"/> instance with the specified value.
     /// </summary>

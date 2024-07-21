@@ -107,3 +107,12 @@ public class Result<TError, TValue>
         _value = value;
     }
 }
+
+
+/// <summary>
+/// Represents the absence of a value.
+/// </summary>
+public class Unit
+{
+    public static readonly Unit Value = new Unit();
+}
