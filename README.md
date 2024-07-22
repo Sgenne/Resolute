@@ -4,4 +4,4 @@ When working on my own projects in .NET, I prefer wrapping the outcome of an ope
 
 Over time, I found myself recreating the same classes and methods in multiple projects. I thus decided to separate these types and utilities into package that I can add using NuGet.
 
-This is very much a work in progress and is intended for use only in me personal side projects. It should not be used in production or real projects.
+This is very much a work in progress and is intended for use only in my personal side projects. It should not be used in production or real projects.
